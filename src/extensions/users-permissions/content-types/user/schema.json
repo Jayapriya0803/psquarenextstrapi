@@ -89,6 +89,12 @@
       "relation": "oneToMany",
       "target": "api::order.order",
       "mappedBy": "users_permissions_user"
+    },
+    "mobile": {
+      "type": "string"
+    },
+    "addressline": {
+      "type": "text"
     }
   }
 }

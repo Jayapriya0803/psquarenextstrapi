@@ -526,6 +526,43 @@ export interface ApiContactusContactus extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiDespatchDespatch extends Struct.CollectionTypeSchema {
+  collectionName: 'despatches';
+  info: {
+    displayName: 'despatch';
+    pluralName: 'despatches';
+    singularName: 'despatch';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    color: Schema.Attribute.Enumeration<
+      ['blue', 'grey', 'greenishblue', 'white']
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.Date;
+    descrip: Schema.Attribute.String;
+    gsm: Schema.Attribute.Enumeration<
+      ['GSM40', 'GSM50', 'GSM60', 'GSM70', 'GSM80', 'COTTONWASTE']
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::despatch.despatch'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    quantity: Schema.Attribute.Integer;
+    unit: Schema.Attribute.Enumeration<['pairs', 'boxes', 'kg', 'nos.']>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiFooterFooter extends Struct.SingleTypeSchema {
   collectionName: 'footers';
   info: {
@@ -653,6 +690,43 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     stock: Schema.Attribute.Integer;
     title: Schema.Attribute.String;
     unit: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiProductionProduction extends Struct.CollectionTypeSchema {
+  collectionName: 'productions';
+  info: {
+    displayName: 'production';
+    pluralName: 'productions';
+    singularName: 'production';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    color: Schema.Attribute.Enumeration<
+      ['blue', 'grey', 'greenishblue', 'white']
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.Date;
+    descrip: Schema.Attribute.String;
+    gsm: Schema.Attribute.Enumeration<
+      ['GSM40', 'GSM50', 'GSM60', 'GSM70', 'GSM80', 'COTTONWASTE']
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::production.production'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    quantity: Schema.Attribute.Integer;
+    unit: Schema.Attribute.Enumeration<['pairs', 'boxes', 'kg', 'nos.']>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1180,10 +1254,12 @@ declare module '@strapi/strapi' {
       'api::about-us.about-us': ApiAboutUsAboutUs;
       'api::category.category': ApiCategoryCategory;
       'api::contactus.contactus': ApiContactusContactus;
+      'api::despatch.despatch': ApiDespatchDespatch;
       'api::footer.footer': ApiFooterFooter;
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::order.order': ApiOrderOrder;
       'api::product.product': ApiProductProduct;
+      'api::production.production': ApiProductionProduction;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

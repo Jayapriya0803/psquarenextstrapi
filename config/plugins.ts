@@ -1,12 +1,9 @@
 export default ({ env }) => ({
-  // 📧 EMAIL (Nodemailer Gmail)
   email: {
     config: {
-      provider: "@strapi/provider-email-nodemailer",
+      provider: "nodemailer",
       providerOptions: {
-        host: "smtp.gmail.com",
-        port: 587,
-        secure: false,
+        service: "gmail",
         auth: {
           user: env("SMTP_USERNAME"),
           pass: env("SMTP_PASSWORD"),

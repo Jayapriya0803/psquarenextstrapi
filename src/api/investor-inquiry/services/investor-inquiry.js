@@ -1,7 +1,3 @@
-/**
- * investor-inquiry service
- */
-
-import { factories } from '@strapi/strapi';
-
-export default factories.createCoreService('api::investor-inquiry.investor-inquiry');
+"use strict";
+const { createCoreService } = require("@strapi/strapi").factories;
+module.exports = createCoreService("api::investor-inquiry.investor-inquiry");

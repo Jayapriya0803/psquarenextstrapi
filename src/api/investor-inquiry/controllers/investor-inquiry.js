@@ -1,7 +1,3 @@
-/**
- * investor-inquiry controller
- */
-
-import { factories } from '@strapi/strapi';
-
-export default factories.createCoreController('api::investor-inquiry.investor-inquiry');
+"use strict";
+const { createCoreController } = require("@strapi/strapi").factories;
+module.exports = createCoreController("api::investor-inquiry.investor-inquiry");

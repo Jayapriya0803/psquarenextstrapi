@@ -7,45 +7,23 @@
     "displayName": "Investor Inquiry"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
-    "fullName": {
-      "type": "string"
-    },
-    "email": {
-      "type": "email"
-    },
-    "phone": {
-      "type": "string"
-    },
-    "company": {
-      "type": "string"
-    },
-    "message": {
-      "type": "text"
-    },
+    "fullName": { "type": "string", "required": true },
+    "email": { "type": "email", "required": true },
+    "phone": { "type": "string", "required": true },
+    "company": { "type": "string" },
+    "amount": { "type": "decimal", "required": true },
+    "message": { "type": "text" },
     "investorStatus": {
       "type": "enumeration",
-      "enum": [
-        "pending",
-        "contacted",
-        "confirmed",
-        "rejected"
-      ]
+      "enum": ["pending", "contacted", "confirmed", "rejected"],
+      "default": "pending"
     },
-    "submittedAt": {
-      "type": "datetime"
-    },
-    "amount": {
-      "type": "decimal"
-    },
-    "razorpayOrderId": {
-      "type": "string"
-    },
-    "razorpayPaymentId": {
-      "type": "string"
-    }
+    "submittedAt": { "type": "datetime" },
+    "razorpayOrderId": { "type": "string" },
+    "razorpayPaymentId": { "type": "string" }
   }
 }

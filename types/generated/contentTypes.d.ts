@@ -628,6 +628,35 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiInvestorInquiryInvestorInquiry extends Struct.CollectionTypeSchema {
+  collectionName: 'investor_inquiries';
+  info: {
+    displayName: 'Investor Inquiry';
+    pluralName: 'investor-inquiries';
+    singularName: 'investor-inquiry';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    amount: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    company: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email & Schema.Attribute.Required;
+    fullName: Schema.Attribute.String & Schema.Attribute.Required;
+    investorStatus: Schema.Attribute.Enumeration<['pending', 'contacted', 'confirmed', 'rejected']>;
+    message: Schema.Attribute.Text;
+    phone: Schema.Attribute.String & Schema.Attribute.Required;
+    razorpayOrderId: Schema.Attribute.String;
+    razorpayPaymentId: Schema.Attribute.String;
+    submittedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
 export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
   collectionName: 'orders';
   info: {
@@ -1257,6 +1286,7 @@ declare module '@strapi/strapi' {
       'api::despatch.despatch': ApiDespatchDespatch;
       'api::footer.footer': ApiFooterFooter;
       'api::home-page.home-page': ApiHomePageHomePage;
+      'api::investor-inquiry.investor-inquiry': ApiInvestorInquiryInvestorInquiry;
       'api::order.order': ApiOrderOrder;
       'api::product.product': ApiProductProduct;
       'api::production.production': ApiProductionProduction;

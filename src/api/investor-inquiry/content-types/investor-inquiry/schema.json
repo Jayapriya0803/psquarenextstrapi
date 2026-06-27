@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "investor_inquiries",
+  "info": {
+    "singularName": "investor-inquiry",
+    "pluralName": "investor-inquiries",
+    "displayName": "Investor Inquiry"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "fullName": { "type": "string", "required": true },
+    "email": { "type": "email", "required": true },
+    "phone": { "type": "string", "required": true },
+    "company": { "type": "string" },
+    "amount": { "type": "decimal", "required": true },
+    "message": { "type": "text" },
+    "investorStatus": {
+      "type": "enumeration",
+      "enum": ["pending", "contacted", "confirmed", "rejected"],
+      "default": "pending"
+    },
+    "submittedAt": { "type": "datetime" },
+    "razorpayOrderId": { "type": "string" },
+    "razorpayPaymentId": { "type": "string" }
+  }
+}
